@@ -1,6 +1,7 @@
 package agents;
 
 import jade.core.Agent;
+import jade.core.behaviours.Behaviour;
 import jade.wrapper.ControllerException;
 
 public class ConsumerAgent extends Agent{
@@ -15,6 +16,26 @@ public class ConsumerAgent extends Agent{
 		}
 		System.out.println("initialisation de l'agent"+this.getAID().getName());
 		System.out.println("i'm trying to buy thr book"+bookName);
+		
+		addBehaviour(new Behaviour() {
+			
+			private int counter =0;
+			@Override
+			public boolean done() {
+				// TODO Auto-generated method stub
+				return (counter==10);
+			}
+			
+			@Override
+			public void action() {
+				System.out.println("-----------------------");
+				System.out.println("step "+counter);
+				System.out.println("-----------------------");
+
+				counter++;
+				
+			}
+		});
 	}
 	
 	@Override
